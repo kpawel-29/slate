@@ -22,6 +22,8 @@ under the License.
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title><%= current_page.data.title || "API Documentation" %></title>
 
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+          rel="stylesheet" type="text/css">
     <style>
       <%= Rouge::Themes::Base16::Monokai.render(:scope => '.highlight') %>
     </style>
@@ -42,7 +44,16 @@ under the License.
       </span>
     </a>
     <div class="tocify-wrapper">
-      <%= image_tag "logo.png" %>
+      <a href='/' target="_blank" style='font-size: 2.7em;
+                                             font-weight: 700;
+                                             padding: 15px 15px;
+                                             line-height: 20px;
+                                             color: #fff;
+                                             text-decoration: none;
+                                             background-color: transparent;
+                                             display: block;
+                                             font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+                                             -moz-osx-font-smoothing: antialiased;'>SAWPE</a>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
