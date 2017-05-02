@@ -50,13 +50,13 @@ Aby uzyskać własny klucz premium - bez ograniczeń wyszukiwania, skontaktuj si
 ## GET
 
 ```shell
-curl "https://sawpe.madkom.pl/api/archive/5846c534a31b58315f24a0a4.pdf?lang=pl"
+curl "https://sawpe.madkom.pl/api/archive/4725d2b6cb62b8ee8a7efcbf65d08d0fd52967b4949e615a7d825ff1643e1ed2.pdf?lang=pl"
 ```
 
 ```php
 <?php
     $client = new \GuzzleHttp\Client();
-    $response = $client->request('GET', 'https://sawpe.madkom.pl/api/archive/5846c534a31b58315f24a0a4.pdf?lang=pl');
+    $response = $client->request('GET', 'https://sawpe.madkom.pl/api/archive/4725d2b6cb62b8ee8a7efcbf65d08d0fd52967b4949e615a7d825ff1643e1ed2.pdf?lang=pl');
 ?>
 ```
 
@@ -102,12 +102,12 @@ Podpisany plik można pobierać do 24 godzin od momentu weryfikacji podpisu. Po 
 ```php
 <?php
     $client = new \GuzzleHttp\Client();
-    $response = $client->request('GET', 'https://sawpe.madkom.pl/api/file/58931fdebc2cc100db6c7d25');
+    $response = $client->request('GET', 'https://sawpe.madkom.pl/api/file/bedb4a5ccf66886cdbe5ff656176fe248416bd78f0324f6dd79206c9e5cc7eae');
 ?>
 ```
 
 ```shell
-curl "https://sawpe.madkom.pl/api/file/58931fdebc2cc100db6c7d25"
+curl "https://sawpe.madkom.pl/api/file/bedb4a5ccf66886cdbe5ff656176fe248416bd78f0324f6dd79206c9e5cc7eae"
 ```
 
 > Uwaga!
@@ -145,164 +145,545 @@ curl "https://sawpe.madkom.pl/api/verify"
   -H "api-auth: YOUR_API_KEY"
 ```
 
-> Powyższy kod zwróci podanego JSON'a:
+> Przykładowy JSON zwrotny dla podpisu typu XAdES:
 
 ```json
-[
-  {
-      "appID": "sawpe.madkom.pl",
-      "dateRequest": "2016-12-06 14:03:32",
-      "idRequest": "5846c534a31b58315f24a8a4",
-      "requestFiles": [
-          "originalName"
-      ],
-      "signatureFiles": [
-          {
-              "fileName": "originalName",
-              "fileStatus": "CORRECT",
-              "signatureNodesResult": [
-                  {
-                      "PZVerifyStatus": {
-                          "danePZ": null,
-                          "status": "NOT_EXISTS"
-                      },
-                      "certificateResult": {
-                          "certificatePathStatus": "CORRECT",
-                          "isTrustedChain": "CORRECT",
-                          "otherErrors": [],
-                          "problemWithPz": false,
-                          "reports": [
-                              {
-                                  "download": null,
-                                  "generalStatus": "CORRECT",
-                                  "isPzCA": false,
-                                  "isQualified": false,
-                                  "isTimestampCA": false,
-                                  "isTrusted": false,
-                                  "issuer": "serialNumber=Nr wpisu: 1, C=PL, O=Unizeto Technologies S.A., CN=CERTUM QCA",
-                                  "name": "CN=Bartosz Tomaszewski, GN=Bartosz, SN=Tomaszewski, serialNumber=PESEL:13292762743, C=PL",
-                                  "selfSigned": false,
-                                  "serialNumber": "50234529",
-                                  "statusCrl": {
-                                      "status": "CORRECT"
-                                  },
-                                  "statusOcsp": {
-                                      "status": "UNCHECKED"
-                                  },
-                                  "statusValidity": {
-                                      "status": "CORRECT"
-                                  },
-                                  "validity": {
-                                      "notAfter": "2017-03-29",
-                                      "notBefore": "2015-03-30"
-                                  }
-                              },
-                              {
-                                  "download": null,
-                                  "generalStatus": "CORRECT",
-                                  "isPzCA": false,
-                                  "isQualified": true,
-                                  "isTimestampCA": false,
-                                  "isTrusted": true,
-                                  "issuer": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
-                                  "name": "serialNumber=Nr wpisu: 1, C=PL, O=Unizeto Technologies S.A., CN=CERTUM QCA",
-                                  "selfSigned": false,
-                                  "serialNumber": "240593320095729088310555193235895822405302832950",
-                                  "statusCrl": {
-                                      "status": "CORRECT"
-                                  },
-                                  "statusOcsp": {
-                                      "status": "UNCHECKED"
-                                  },
-                                  "statusValidity": {
-                                      "status": "CORRECT"
-                                  },
-                                  "validity": {
-                                      "notAfter": "2019-04-07",
-                                      "notBefore": "2014-04-07"
-                                  }
-                              },
-                              {
-                                  "download": null,
-                                  "generalStatus": "CORRECT",
-                                  "isPzCA": false,
-                                  "isQualified": true,
-                                  "isTimestampCA": false,
-                                  "isTrusted": true,
-                                  "issuer": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
-                                  "name": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
-                                  "selfSigned": true,
-                                  "serialNumber": "563206454069127598643323046419945895619292235545",
-                                  "statusCrl": {
-                                      "status": "CORRECT"
-                                  },
-                                  "statusOcsp": {
-                                      "status": "UNCHECKED"
-                                  },
-                                  "statusValidity": {
-                                      "status": "CORRECT"
-                                  },
-                                  "validity": {
-                                      "notAfter": "2020-10-26",
-                                      "notBefore": "2009-10-26"
-                                  }
-                              }
-                          ],
-                          "unvalidChain": false
-                      },
-                      "commitmentType": [],
-                      "nodePath": "/ds:Signature",
-                      "parentNodePath": null,
-                      "signatureResult": {
-                          "reference": [
-                              {
-                                  "externalFile": false,
-                                  "idReference": "Reference1_bbabc72d-1df3-4b5b-b868-02c84d840129_7e",
-                                  "status": "CORRECT",
-                                  "uri": "#Object1_bbabc72d-1df3-4b5b-b868-02c84d840129"
-                              },
-                              {
-                                  "externalFile": false,
-                                  "idReference": "SignedProperties-Reference_bbabc72d-1df3-4b5b-b868-02c84d840129_71",
-                                  "status": "CORRECT",
-                                  "uri": "#SignedProperties_bbabc72d-1df3-4b5b-b868-02c84d840129_17"
-                              }
-                          ],
-                          "signatureValueStatus": {
-                              "status": "CORRECT"
-                          }
-                      },
-                      "signatureStatus": "CORRECT",
-                      "signatureType": {
-                          "type": "QUALIFIED"
-                      },
-                      "signedFileInfo": null,
-                      "signer": "unknown",
-                      "signingCertificateStatus": {
-                          "status": "CORRECT"
-                      },
-                      "signingTimeResult": {
-                          "time": "2015-10-20 11:57:17",
-                          "type": "DECLARED"
-                      },
-                      "timestampStatus": {
-                          "certificateStatus": null,
-                          "timestampExist": true,
-                          "timestampValue": "2016-12-06 14:03:31",
-                          "verificationStatus": "INCORRECT"
-                      }
-                  }
-              ]
-          }
-      ],
-      "status": "ok",
-      "verificationStatus": "CORRECT"
-  }
-]
+{
+    "appID": "sawpe.madkom.pl",
+    "dateRequest": "2017-04-14 9:53:26",
+    "idRequest": "5f05ac9c3b54d23d8dd607d5f312b7936094a9c091a7f586ad8557f91d06a17a",
+    "requestFiles": [
+        "print_20170221095349.pdf.xades",
+        "print_20170221095349.pdf"
+    ],
+    "signatureFiles": [
+        {
+            "fileName": "print_20170221095349.pdf.xades",
+            "fileStatus": "CORRECT",
+            "signatureNodesResult": [
+                {
+                    "PZVerifyStatus": {
+                        "danePZ": null,
+                        "status": "NOT_EXISTS"
+                    },
+                    "certificateResult": {
+                        "certificatePathStatus": "CORRECT",
+                        "isTrustedChain": "CORRECT",
+                        "otherErrors": [],
+                        "problemWithPz": false,
+                        "reports": [
+                            {
+                                "download": null,
+                                "generalStatus": "CORRECT",
+                                "isPzCA": false,
+                                "isQualified": false,
+                                "isTimestampCA": false,
+                                "isTrusted": false,
+                                "issuer": "serialNumber=Nr wpisu: 14, C=PL, O=Asseco Data Systems S.A., CN=CERTUM QCA",
+                                "name": "CN=Bartosz Tomaszewski, GN=Bartosz, SN=Tomaszewski, serialNumber=PESEL:13292762743, C=PL",
+                                "selfSigned": false,
+                                "serialNumber": "50234529",
+                                "statusCrl": {
+                                    "status": "CORRECT"
+                                },
+                                "statusOcsp": {
+                                    "status": "UNCHECKED"
+                                },
+                                "statusValidity": {
+                                    "status": "CORRECT"
+                                },
+                                "validity": {
+                                    "notAfter": "2018-04-28",
+                                    "notBefore": "2016-04-28"
+                                }
+                            },
+                            {
+                                "download": null,
+                                "generalStatus": "CORRECT",
+                                "isPzCA": false,
+                                "isQualified": true,
+                                "isTimestampCA": false,
+                                "isTrusted": true,
+                                "issuer": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
+                                "name": "serialNumber=Nr wpisu: 14, C=PL, O=Asseco Data Systems S.A., CN=CERTUM QCA",
+                                "selfSigned": false,
+                                "serialNumber": "29592591606546924594270077441325992323698688547",
+                                "statusCrl": {
+                                    "status": "CORRECT"
+                                },
+                                "statusOcsp": {
+                                    "status": "UNCHECKED"
+                                },
+                                "statusValidity": {
+                                    "status": "CORRECT"
+                                },
+                                "validity": {
+                                    "notAfter": "2020-10-26",
+                                    "notBefore": "2016-04-01"
+                                }
+                            },
+                            {
+                                "download": null,
+                                "generalStatus": "CORRECT",
+                                "isPzCA": false,
+                                "isQualified": false,
+                                "isTimestampCA": false,
+                                "isTrusted": true,
+                                "issuer": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
+                                "name": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
+                                "selfSigned": true,
+                                "serialNumber": "563206454069127598643323046419945895619292235545",
+                                "statusCrl": {
+                                    "status": "CORRECT"
+                                },
+                                "statusOcsp": {
+                                    "status": "UNCHECKED"
+                                },
+                                "statusValidity": {
+                                    "status": "CORRECT"
+                                },
+                                "validity": {
+                                    "notAfter": "2020-10-26",
+                                    "notBefore": "2009-10-26"
+                                }
+                            }
+                        ],
+                        "unvalidChain": false
+                    },
+                    "commitmentType": [],
+                    "nodePath": "/ds:Signature",
+                    "parentNodePath": null,
+                    "pdfSignatureResult": null,
+                    "signatureResult": {
+                        "reference": [
+                            {
+                                "externalFile": true,
+                                "idReference": "Reference1_f2eaf393-669f-4a61-9709-e5440aa06334_72",
+                                "status": "CORRECT",
+                                "uri": "print_20170221095349.pdf"
+                            },
+                            {
+                                "externalFile": false,
+                                "idReference": "SignedProperties-Reference_f2eaf393-669f-4a61-9709-e5440aa06334_7d",
+                                "status": "CORRECT",
+                                "uri": "#SignedProperties_f2eaf393-669f-4a61-9709-e5440aa06334_1b"
+                            }
+                        ],
+                        "signatureValueStatus": {
+                            "status": "CORRECT"
+                        }
+                    },
+                    "signatureStatus": "CORRECT",
+                    "signatureType": {
+                        "type": "QUALIFIED"
+                    },
+                    "signedFileInfo": null,
+                    "signer": "Bartosz Tomaszewski",
+                    "signingCertificateStatus": {
+                        "status": "CORRECT"
+                    },
+                    "signingTimeResult": {
+                        "time": "2017-02-21 08:54:31",
+                        "type": "DECLARED"
+                    },
+                    "timestampStatus": {
+                        "certificateStatus": null,
+                        "timestampExist": false,
+                        "timestampValue": "2017-04-14 09:53:24",
+                        "verificationStatus": "UNCHECKED"
+                    },
+                    "unsignedProperties": {
+                        "certificateRefsResult": [
+                            {
+                                "id": null,
+                                "status": "NOT_EXISTS",
+                                "subjectDN": null
+                            }
+                        ],
+                        "revocationRefsResult": [
+                            {
+                                "id": null,
+                                "status": "NOT_EXISTS"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "PZVerifyStatus": {
+                        "danePZ": null,
+                        "status": "NOT_EXISTS"
+                    },
+                    "certificateResult": {
+                        "certificatePathStatus": "CORRECT",
+                        "isTrustedChain": "CORRECT",
+                        "otherErrors": [],
+                        "problemWithPz": false,
+                        "reports": [
+                            {
+                                "download": null,
+                                "generalStatus": "CORRECT",
+                                "isPzCA": false,
+                                "isQualified": false,
+                                "isTimestampCA": false,
+                                "isTrusted": false,
+                                "issuer": "serialNumber=Nr wpisu: 14, C=PL, O=Asseco Data Systems S.A., CN=CERTUM QCA",
+								"name": "CN=Bartosz Tomaszewski, GN=Bartosz, SN=Tomaszewski, serialNumber=PESEL:13292762743, C=PL",
+                                "selfSigned": false,
+                                "serialNumber": "50234529",
+                                "statusCrl": {
+                                    "status": "CORRECT"
+                                },
+                                "statusOcsp": {
+                                    "status": "UNCHECKED"
+                                },
+                                "statusValidity": {
+                                    "status": "CORRECT"
+                                },
+                                "validity": {
+                                    "notAfter": "2018-04-28",
+                                    "notBefore": "2016-04-28"
+                                }
+                            },
+                            {
+                                "download": null,
+                                "generalStatus": "CORRECT",
+                                "isPzCA": false,
+                                "isQualified": true,
+                                "isTimestampCA": false,
+                                "isTrusted": true,
+                                "issuer": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
+                                "name": "serialNumber=Nr wpisu: 14, C=PL, O=Asseco Data Systems S.A., CN=CERTUM QCA",
+                                "selfSigned": false,
+                                "serialNumber": "29592591606546924594270077441325992323698688547",
+                                "statusCrl": {
+                                    "status": "CORRECT"
+                                },
+                                "statusOcsp": {
+                                    "status": "UNCHECKED"
+                                },
+                                "statusValidity": {
+                                    "status": "CORRECT"
+                                },
+                                "validity": {
+                                    "notAfter": "2020-10-26",
+                                    "notBefore": "2016-04-01"
+                                }
+                            },
+                            {
+                                "download": null,
+                                "generalStatus": "CORRECT",
+                                "isPzCA": false,
+                                "isQualified": false,
+                                "isTimestampCA": false,
+                                "isTrusted": true,
+                                "issuer": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
+                                "name": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
+                                "selfSigned": true,
+                                "serialNumber": "563206454069127598643323046419945895619292235545",
+                                "statusCrl": {
+                                    "status": "CORRECT"
+                                },
+                                "statusOcsp": {
+                                    "status": "UNCHECKED"
+                                },
+                                "statusValidity": {
+                                    "status": "CORRECT"
+                                },
+                                "validity": {
+                                    "notAfter": "2020-10-26",
+                                    "notBefore": "2009-10-26"
+                                }
+                            }
+                        ],
+                        "unvalidChain": false
+                    },
+                    "commitmentType": [],
+                    "nodePath": "/ds:Signature/ds:Object/xades:QualifyingProperties/xades:UnsignedProperties/xades:UnsignedSignatureProperties/xades:CounterSignature/ds:Signature",
+                    "parentNodePath": "/ds:Signature",
+                    "pdfSignatureResult": null,
+                    "signatureResult": {
+                        "reference": [
+                            {
+                                "externalFile": false,
+                                "idReference": "Reference1_da9736e8-37bf-4df3-8d33-8188abe99936_7c",
+                                "status": "CORRECT",
+                                "uri": "#SignatureValue_f2eaf393-669f-4a61-9709-e5440aa06334_07"
+                            },
+                            {
+                                "externalFile": false,
+                                "idReference": "SignedProperties-Reference_da9736e8-37bf-4df3-8d33-8188abe99936_73",
+                                "status": "CORRECT",
+                                "uri": "#SignedProperties_da9736e8-37bf-4df3-8d33-8188abe99936_15"
+                            }
+                        ],
+                        "signatureValueStatus": {
+                            "status": "CORRECT"
+                        }
+                    },
+                    "signatureStatus": "CORRECT",
+                    "signatureType": {
+                        "type": "QUALIFIED"
+                    },
+                    "signedFileInfo": null,
+                    "signer": "Bartosz Tomaszewski",
+                    "signingCertificateStatus": {
+                        "status": "CORRECT"
+                    },
+                    "signingTimeResult": {
+                        "time": "2017-02-21 08:56:44",
+                        "type": "DECLARED"
+                    },
+                    "timestampStatus": {
+                        "certificateStatus": null,
+                        "timestampExist": false,
+                        "timestampValue": "2017-04-14 09:53:24",
+                        "verificationStatus": "UNCHECKED"
+                    },
+                    "unsignedProperties": {
+                        "certificateRefsResult": [
+                            {
+                                "id": null,
+                                "status": "NOT_EXISTS",
+                                "subjectDN": null
+                            }
+                        ],
+                        "revocationRefsResult": [
+                            {
+                                "id": null,
+                                "status": "NOT_EXISTS"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "status": "ok",
+    "verificationStatus": "CORRECT"
+}
+```
+
+> Przykładowy JSON zwrotny dla podpisu typu PAdES:
+
+```json
+{
+    "appID": "sawpe.madkom.pl",
+    "dateRequest": "2017-04-14 9:17:37",
+    "idRequest": "5f05ac9c3b54d23d8dd607d5f312b7936094a9c091a7f586ad8557f91d06a17a",
+    "requestFiles": [
+        "D2017003077001.pdf"
+    ],
+    "signatureFiles": [
+        {
+            "fileName": "D2017000078001.pdf",
+            "fileStatus": "CORRECT",
+            "signatureNodesResult": [
+                {
+                    "PZVerifyStatus": {
+                        "danePZ": null,
+                        "status": "NOT_EXISTS"
+                    },
+                    "certificateResult": {
+                        "certificatePathStatus": "CORRECT",
+                        "isTrustedChain": "CORRECT",
+                        "otherErrors": [],
+                        "problemWithPz": false,
+                        "reports": [
+                            {
+                                "download": {
+                                    "originalName": "Mikołaj Baranowski.pem"
+                                },
+                                "generalStatus": "CORRECT",
+                                "isPzCA": false,
+                                "isQualified": false,
+                                "isTimestampCA": false,
+                                "isTrusted": false,
+                                "issuer": "serialNumber=Nr wpisu: 14, C=PL, O=Asseco Data Systems S.A., CN=CERTUM QCA",
+                                "name": "CN=Mikołaj Baranowski, GN=Mikołaj, SN=Baranowski, serialNumber=PESEL:24072238446, C=PL",
+                                "selfSigned": false,
+                                "serialNumber": "120502833778484445328069050452749185273",
+                                "statusCrl": {
+                                    "status": "CORRECT"
+                                },
+                                "statusOcsp": {
+                                    "status": "UNCHECKED"
+                                },
+                                "statusValidity": {
+                                    "status": "CORRECT"
+                                },
+                                "validity": {
+                                    "notAfter": "2018-07-10",
+                                    "notBefore": "2016-07-10"
+                                }
+                            },
+                            {
+                                "download": null,
+                                "generalStatus": "CORRECT",
+                                "isPzCA": false,
+                                "isQualified": true,
+                                "isTimestampCA": false,
+                                "isTrusted": true,
+                                "issuer": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
+                                "name": "serialNumber=Nr wpisu: 14, C=PL, O=Asseco Data Systems S.A., CN=CERTUM QCA",
+                                "selfSigned": false,
+                                "serialNumber": "29592591606546924594270077441325992323698688547",
+                                "statusCrl": {
+                                    "status": "CORRECT"
+                                },
+                                "statusOcsp": {
+                                    "status": "UNCHECKED"
+                                },
+                                "statusValidity": {
+                                    "status": "CORRECT"
+                                },
+                                "validity": {
+                                    "notAfter": "2020-10-26",
+                                    "notBefore": "2016-04-01"
+                                }
+                            },
+                            {
+                                "download": null,
+                                "generalStatus": "CORRECT",
+                                "isPzCA": false,
+                                "isQualified": false,
+                                "isTimestampCA": false,
+                                "isTrusted": true,
+                                "issuer": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
+                                "name": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
+                                "selfSigned": true,
+                                "serialNumber": "563206454069127598643323046419945895619292235545",
+                                "statusCrl": {
+                                    "status": "CORRECT"
+                                },
+                                "statusOcsp": {
+                                    "status": "UNCHECKED"
+                                },
+                                "statusValidity": {
+                                    "status": "CORRECT"
+                                },
+                                "validity": {
+                                    "notAfter": "2020-10-26",
+                                    "notBefore": "2009-10-26"
+                                }
+                            }
+                        ],
+                        "unvalidChain": false
+                    },
+                    "commitmentType": [],
+                    "nodePath": "Signature-271279d4-8c43-4d7c-acfc-bd4ce0cd7b9b",
+                    "parentNodePath": null,
+                    "pdfSignatureResult": {
+                        "isLastSignature": true,
+                        "isModified": false,
+                        "isWholeDocument": true,
+                        "revision": "1",
+                        "signedDocument": "D2017003077001.pdf"
+                    },
+                    "signatureResult": null,
+                    "signatureStatus": "CORRECT",
+                    "signatureType": {
+                        "type": "PADES"
+                    },
+                    "signedFileInfo": {
+                        "originalName": "D2017003077001.pdf_1.pdf"
+                    },
+                    "signer": "Mikołaj Baranowski",
+                    "signingCertificateStatus": {
+                        "status": "DOESNT_EXIST"
+                    },
+                    "signingTimeResult": {
+                        "time": "2017-04-13 14:00:52",
+                        "type": "TIMESTAMP"
+                    },
+                    "timestampStatus": {
+                        "certificateStatus": {
+                            "certificatePathStatus": "CORRECT",
+                            "isTrustedChain": "CORRECT",
+                            "otherErrors": [],
+                            "problemWithPz": false,
+                            "reports": [
+                                {
+                                    "download": null,
+                                    "generalStatus": "CORRECT",
+                                    "isPzCA": false,
+                                    "isQualified": false,
+                                    "isTimestampCA": true,
+                                    "isTrusted": false,
+                                    "issuer": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
+                                    "name": "serialNumber=Nr wpisu: 15, C=PL, O=Asseco Data Systems S.A., CN=CERTUM QTSA",
+                                    "selfSigned": false,
+                                    "serialNumber": "227792606299944004592002222445418427029064848827",
+                                    "statusCrl": {
+                                        "status": "CORRECT"
+                                    },
+                                    "statusOcsp": {
+                                        "status": "UNCHECKED"
+                                    },
+                                    "statusValidity": {
+                                        "status": "CORRECT"
+                                    },
+                                    "validity": {
+                                        "notAfter": "2020-10-26",
+                                        "notBefore": "2016-04-01"
+                                    }
+                                },
+                                {
+                                    "download": null,
+                                    "generalStatus": "CORRECT",
+                                    "isPzCA": false,
+                                    "isQualified": false,
+                                    "isTimestampCA": false,
+                                    "isTrusted": true,
+                                    "issuer": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
+                                    "name": "C=PL, O=Minister wlasciwy do spraw gospodarki, CN=Narodowe Centrum Certyfikacji (NCCert)",
+                                    "selfSigned": true,
+                                    "serialNumber": "563206454069127598643323046419945895619292235545",
+                                    "statusCrl": {
+                                        "status": "CORRECT"
+                                    },
+                                    "statusOcsp": {
+                                        "status": "UNCHECKED"
+                                    },
+                                    "statusValidity": {
+                                        "status": "CORRECT"
+                                    },
+                                    "validity": {
+                                        "notAfter": "2020-10-26",
+                                        "notBefore": "2009-10-26"
+                                    }
+                                }
+                            ],
+                            "unvalidChain": false
+                        },
+                        "timestampExist": true,
+                        "timestampValue": "2017-04-13 14:00:52",
+                        "verificationStatus": "CORRECT"
+                    },
+                    "unsignedProperties": null
+                }
+            ]
+        }
+    ],
+    "status": "ok",
+    "verificationStatus": "CORRECT"
+}
 ```
 
 Ten endpoint pozwala przesłać pliki do weryfikacji.
 
+Istnieje możliwość przesłania opcjonalnych tablic white_list i black_list z nazwami plików.
+Lista przesyłanych plików do weryfikatora będzie wtedy okrojona: dodane zostaną tylko pliki z white listy (jeżeli jest ustawiona) i usunięte
+pliki znajdujące się na black liście.
+
 ### HTTP Request
 
 `POST https://sawpe.madkom.pl/api/verify`
+
+
+### Parametry URL
+
+Parametr | Opis
+--------- | -----------
+white_list | tablica z nazwami plików, które powinny być zweryfikowane (parametr opcjonalny)
+black_list | tablica z nazwami plików, które nie powinny być weryfikowane (parametr opcjonalny)
+
