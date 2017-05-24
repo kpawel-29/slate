@@ -6,7 +6,7 @@ language_tabs:
   - php: PHP
 
 toc_footers:
-  - <a href='/pl/kontakt' target="_blank">Skontaktuj się z nami</a>
+  - <a href='/pl/o-systemie' target="_blank">Skontaktuj się z nami</a>
   - <a href='http://madkom.pl' target="_blank">MADKOM SA</a>
 
 search: false
@@ -43,7 +43,7 @@ curl "https://sawpe.madkom.pl/api/<PATH>"
 
 > Pamiętaj aby podać poprawny klucz!
 
-Aby uzyskać własny klucz premium - bez ograniczeń wyszukiwania, skontaktuj się z nami za pomocą <a href='/pl/kontakt' target="_blank">formularza</a>
+Aby uzyskać własny klucz premium - bez ograniczeń wyszukiwania, skontaktuj się z nami za pomocą <a href='/pl/o-systemie' target="_blank">formularza</a>
 
 # Pobieranie archiwalnych
 
@@ -89,40 +89,40 @@ TYPE | Typ pobieranego pliku (HTML, PDF lub JSON)
 LANG | Język wyniku weryfikacji (pl lub en), opcjonalny
 
 
-# Pobieranie dokumentu
+<!--- # Pobieranie dokumentu --->
 
-## GET
-
-SAWPE umożliwia pobranie wyodrębnionego z podpisu pliku.
-
-Informacja o identyfikatorze potrzebnym do pobrania pliku znajduje się w json'ie - wyniku weryfikacji w sekcji <code>signedFileInfo</code>, w kluczu <code>path</code>.
-
-Podpisany plik można pobierać do 24 godzin od momentu weryfikacji podpisu. Po tym czasie plik jest usuwany z bazy.
-
-```php
-<?php
-    $client = new \GuzzleHttp\Client();
-    $response = $client->request('GET', 'https://sawpe.madkom.pl/api/file/bedb4a5ccf66886cdbe5ff656176fe248416bd78f0324f6dd79206c9e5cc7eae');
-?>
-```
-
-```shell
-curl "https://sawpe.madkom.pl/api/file/bedb4a5ccf66886cdbe5ff656176fe248416bd78f0324f6dd79206c9e5cc7eae"
-```
-
-> Uwaga!
-Sekcja signedFileInfo jest prezentowana tylko w wyniku weryfikacji podpisu elektronicznego. W przypadku pobierania archiwalnych wyników klucz ten jest ustawiany na null
-
-
-### HTTP Request
-
-`GET https://sawpe.madkom.pl/api/file/<FILE_ID>`
-
-### Parametry URL
-
-Parametr | Opis
---------- | -----------
-FILE_ID | Identyfikator pliku pobrany z klucza path z signedFileInfo
+<!--- ## GET --->
+ 
+<!--- SAWPE umożliwia pobranie wyodrębnionego z podpisu pliku. --->
+ 
+<!--- Informacja o identyfikatorze potrzebnym do pobrania pliku znajduje się w json'ie - wyniku weryfikacji w sekcji <code>signedFileInfo</code>, w kluczu <code>path</code>. --->
+ 
+<!--- Podpisany plik można pobierać do 24 godzin od momentu weryfikacji podpisu. Po tym czasie plik jest usuwany z bazy. --->
+ 
+<!--- ```php --->
+<!--- <?php --->
+<!--- $client = new \GuzzleHttp\Client(); --->
+<!--- $response = $client->request('GET', 'https://sawpe.madkom.pl/api/file/bedb4a5ccf66886cdbe5ff656176fe248416bd78f0324f6dd79206c9e5cc7eae'); --->
+<!--- ?> --->
+<!--- ``` --->
+ 
+<!--- ```shell --->
+<!--- curl "https://sawpe.madkom.pl/api/file/bedb4a5ccf66886cdbe5ff656176fe248416bd78f0324f6dd79206c9e5cc7eae" --->
+<!--- ``` --->
+ 
+<!--- > Uwaga! --->
+<!--- Sekcja signedFileInfo jest prezentowana tylko w wyniku weryfikacji podpisu elektronicznego. W przypadku pobierania archiwalnych wyników klucz ten jest ustawiany na null --->
+ 
+ 
+<!--- ### HTTP Request --->
+ 
+<!--- `GET https://sawpe.madkom.pl/api/file/<FILE_ID>` --->
+ 
+<!--- ### Parametry URL --->
+ 
+<!--- Parametr | Opis --->
+<!--- --------- | ----------- --->
+<!--- FILE_ID | Identyfikator pliku pobrany z klucza path z signedFileInfo --->
 
 
 # Weryfikacja
@@ -131,9 +131,17 @@ FILE_ID | Identyfikator pliku pobrany z klucza path z signedFileInfo
 
 ```php
 <?php
-    $body = fopen('/path/to/file', 'r');
-    $headers = array('api-auth' => YOUR_API_KEY);
-    $options = array('headers' => $headers, 'body' => $body);
+    $options = [
+        'headers'  => [
+            'api-auth' => 'YOUR_API_KEY'
+        ],
+        'multipart' => [
+            [
+                'name'     => 'file',
+                'contents' => fopen('/path/to/file', 'r')
+            ]
+        ]
+    ];
 
     $client = new \GuzzleHttp\Client();
     $response = $client->request('POST', 'https://sawpe.madkom.pl/api/verify', $options);
