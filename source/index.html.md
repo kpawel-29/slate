@@ -6,7 +6,7 @@ language_tabs:
   - php: PHP
 
 toc_footers:
-  - <a href='/pl/o-systemie' target="_blank">Skontaktuj się z nami</a>
+  - <a href='/contact.html' target="_blank">Skontaktuj się z nami</a>
   - <a href='http://madkom.pl' target="_blank">MADKOM SA</a>
 
 search: false
@@ -16,7 +16,7 @@ search: false
 
 SAWPE umożliwia weryfikowanie plików poprzez API oraz pobieranie wyników archiwalnych w postaci HTML, PDF i JSON.
 
-Dodatkowo istnieje możliwość pobrania wyodrębnionego z podpisu pliku.
+<!--- Dodatkowo istnieje możliwość pobrania wyodrębnionego z podpisu pliku. --->
 
 # Autoryzacja
 
@@ -43,28 +43,28 @@ curl "https://sawpe.madkom.pl/api/<PATH>"
 
 > Pamiętaj aby podać poprawny klucz!
 
-Aby uzyskać własny klucz premium - bez ograniczeń wyszukiwania, skontaktuj się z nami za pomocą <a href='/pl/o-systemie' target="_blank">formularza</a>
+Aby uzyskać własny klucz premium - bez ograniczeń wyszukiwania, skontaktuj się z nami za pomocą <a href='/contact.html' target="_blank">formularza</a>
 
 # Pobieranie archiwalnych
 
 ## GET
 
 ```shell
-curl "https://sawpe.madkom.pl/api/archive/4725d2b6cb62b8ee8a7efcbf65d08d0fd52967b4949e615a7d825ff1643e1ed2.pdf?lang=pl"
+curl "https://sawpe.madkom.pl/api/v2/4725d2b6cb62b8ee8a7efcbf65d08d0fd52967b4949e615a7d825ff1643e1ed2.pdf?lang=pl"
 ```
 
 ```php
 <?php
     $client = new \GuzzleHttp\Client();
-    $response = $client->request('GET', 'https://sawpe.madkom.pl/api/archive/4725d2b6cb62b8ee8a7efcbf65d08d0fd52967b4949e615a7d825ff1643e1ed2.pdf?lang=pl');
+    $response = $client->request('GET', 'https://sawpe.madkom.pl/api/v2/4725d2b6cb62b8ee8a7efcbf65d08d0fd52967b4949e615a7d825ff1643e1ed2.pdf?lang=pl');
 ?>
 ```
 
 
 
-> W przypadku użycia domyślnego klucza autoryzacyjnego, powyższy kod zwróci przekierowanie do formularza z zabezpieczeniem reCAPTCHa (jeżeli obsługiwana jest odpowiedź typu HTML).
-
 > W przypadku płatnego klucza, zwróci załącznik w formacie PDF.
+
+> W przypadku użycia domyślnego klucza autoryzacyjnego nie ma możliwości pobierania wyników archiwalnych w postaci plików.
 
 > Podany parametr lang jest opcjonalny, w przypadku nieprzekazania parametru wynik weryfikacji będzie w języku polskim.
 
@@ -78,7 +78,7 @@ Istnieje możliwość pobrania wyniku weryfikacji w języku angielskim, należy 
 
 ### HTTP Request
 
-`GET https://sawpe.madkom.pl/api/archive/<ID>.<TYPE>?lang=<LANG>`
+`GET https://sawpe.madkom.pl/api/v2/<ID>.<TYPE>?lang=<LANG>`
 
 ### Parametry URL
 
@@ -149,8 +149,7 @@ LANG | Język wyniku weryfikacji (pl lub en), opcjonalny
 ```
 
 ```shell
-curl "https://sawpe.madkom.pl/api/verify"
-  -H "api-auth: YOUR_API_KEY"
+curl -F "file[0]"=@some_signed_file.xml -F "file[1]"=@signature.xml -H "api-auth: YOUR_API_KEY"  https://sawpe.madkom.pl/api/verify
 ```
 
 > Przykładowy JSON zwrotny dla podpisu typu XAdES:
@@ -170,7 +169,7 @@ curl "https://sawpe.madkom.pl/api/verify"
             "fileStatus": "CORRECT",
             "signatureNodesResult": [
                 {
-                    "PZVerifyStatus": {
+                    "PZStatus": {
                         "danePZ": null,
                         "status": "NOT_EXISTS"
                     },
@@ -317,7 +316,7 @@ curl "https://sawpe.madkom.pl/api/verify"
                     }
                 },
                 {
-                    "PZVerifyStatus": {
+                    "PZStatus": {
                         "danePZ": null,
                         "status": "NOT_EXISTS"
                     },
@@ -487,7 +486,7 @@ curl "https://sawpe.madkom.pl/api/verify"
             "fileStatus": "CORRECT",
             "signatureNodesResult": [
                 {
-                    "PZVerifyStatus": {
+                    "PZStatus": {
                         "danePZ": null,
                         "status": "NOT_EXISTS"
                     },
